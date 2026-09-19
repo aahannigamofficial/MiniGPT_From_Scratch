@@ -16,6 +16,6 @@ print(token_ids)
 words = ["run", "running", "runner", "walk", "walking"]
 for word in words:
     if word.startswith("run"):
-        print(word, "→", "run")
+        print(word, "->", "run")
     elif word.startswith("walk"):
-        print(word, "→", "walk")
+        print(word, "->", "walk")
