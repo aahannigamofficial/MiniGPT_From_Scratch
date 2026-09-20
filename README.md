@@ -1,5 +1,4 @@
-﻿# MiniGPT_From_Scratch
-# MiniGPT From Scratch
+﻿# MiniGPT From Scratch
 
 A beginner-friendly implementation of a **small GPT-style Large Language Model from scratch using PyTorch**.
 
