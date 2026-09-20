@@ -190,7 +190,7 @@ def generate(
 # Test generation
 # ============================================================
 
-prompt = "The animals are"
+prompt = "The cat is looking at the"
 
 generated_text = generate(
     prompt,
