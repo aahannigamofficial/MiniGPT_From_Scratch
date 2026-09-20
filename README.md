@@ -940,39 +940,4 @@ The project is designed to be understood in this order:
 23. Full Architecture
 24. Tensor Shape Cheat Sheet
 25. Important Equations
-26. Interview Questions
 ```
-
-# Core Mental Model
-
-The most important idea in this project is:
-
-> **What happens to `"The cat"` as it travels through my model?**
-
-If I understand that journey, I understand the MiniGPT.
-
-```text
-"The cat"
-    ↓
-Tokens
-    ↓
-Token IDs
-    ↓
-Embeddings
-    ↓
-Position Information
-    ↓
-Self-Attention
-    ↓
-Information Mixing
-    ↓
-Feed Forward Transformation
-    ↓
-Repeated Transformer Blocks
-    ↓
-Logits
-    ↓
-Next Token
-```
-
-That is the core journey this project is designed to teach.
