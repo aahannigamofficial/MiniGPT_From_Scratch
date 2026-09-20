@@ -1,5 +1,5 @@
 import torch
-
+from tokenizer import Tokenizer
 from model import MiniGPT
 
 
@@ -62,32 +62,27 @@ model.eval()
 # Encoding and decoding
 # ============================================================
 
+with open(
+    "data/corpus.txt",
+    "r",
+    encoding="utf-8"
+) as file:
+    corpus_text = file.read()
+
+tokenizer = Tokenizer(corpus_text)
+
 def encode(text):
     """
     Convert text into token IDs.
     """
-
-    tokens = text.split()
-
-    return [
-        token_to_id.get(
-            token,
-            token_to_id["<UNK>"]
-        )
-        for token in tokens
-    ]
+    return tokenizer.encode(text)
 
 
 def decode(token_ids):
+    return tokenizer.decode(token_ids)
     """
     Convert token IDs back into text.
     """
-
-    return " ".join(
-        id_to_token[token_id]
-        for token_id in token_ids
-    )
-
 
 # ============================================================
 # Generate text
@@ -170,16 +165,17 @@ def generate(
         # Sample next token
         # ====================================================
 
-        next_token = torch.multinomial(
-            probabilities,
-            num_samples=1
-        )
+    next_token = torch.argmax(
+        next_token_logits,
+        dim=-1,
+        keepdim=True
+            )
 
         # ====================================================
         # Add new token to sequence
         # ====================================================
 
-        input_ids = torch.cat(
+    input_ids = torch.cat(
             [input_ids, next_token],
             dim=1
         )
@@ -194,7 +190,7 @@ def generate(
 # Test generation
 # ============================================================
 
-prompt = "The cat"
+prompt = "The animals are"
 
 generated_text = generate(
     prompt,

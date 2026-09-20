@@ -10,7 +10,7 @@ from tokenizer import Tokenizer
 # Settings
 # ============================================================
 
-max_sequence_length = 4
+max_sequence_length = 8
 
 embedding_dim = 8
 num_heads = 2
